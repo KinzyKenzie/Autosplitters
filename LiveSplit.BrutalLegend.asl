@@ -5,27 +5,19 @@ state("BrutalLegend")
 
 startup
 {
-	settings.Add("FT25", true, "Brütal Victory");
+	settings.Add("Campaign", true);
+	settings.Add("FT25", true, "Brütal Victory", "Campaign");
+	settings.SetToolTip("FT25", "Note: Does NOT split for \"Welcome to the Age of Metal\", and \"Abomination Overdrive\"");
 	
 	settings.Add("Collectables", false);
 	settings.Add("FT5", false, "Bound Serpent Freed", "Collectables");
 	settings.Add("FT10", false, "Various (Worth 10 Tributes)", "Collectables");
 	settings.SetToolTip("FT10", "Buried Metal, Landmark Viewer, Lightning Spark Plug Jump");
-	
-	settings.Add("START", false, "[Experimental] Start timer when Fan Tribute count changes");
 }
 
 exit
 {
 	timer.IsGameTimePaused = true;
-}
-
-start
-{
-	if (current.tributes > old.tributes)
-	{
-		return settings["START"];
-	}
 }
 
 split
